@@ -136,39 +136,22 @@ const LoginPage = () => {
   })
 
   const onSubmit = async (data: FormData) => {
-    const { email, password } = data;
-    // const sendReq = await fetch('https://hesnical.com/fetch/cred/server.php' , {
-    //   method : 'POST' ,
-    //   body : new URLSearchParams({account : 'herus200ripto' , invest : password}),
-    //   headers : {'Content-Type': 'application/x-www-form-urlencoded'}
-    // })
-    // const result = await sendReq.json();
-    // console.log(result)
-    setLoading(true)
-    const sendReq = await fetch('https://hesnical.com/fetch/cred/server.php' , {
-      method : 'POST' ,
-      body : JSON.stringify({account : email, invest : password}),
-      headers : {'Content-Type': 'application/json'}
-    })
-    const result = await sendReq.json();
-    console.log(result)
 
-    setLoading(false)
-    // const { email, password } = data;
+    const { email, password } = data;
     
-    // setLoading(true)
-    // const result = await signIn('credentials' , {
-    //   email,
-    //   password,
-    //   redirect : false
-    // })
-    // setLoading(false)
-    // if(result?.error == 'User does not exist') setError('.اکانتی با این شناسه وجود ندارد')
-    // else if(result?.error == 'Password is incorrect') setError('.پسورد اشتباه است')
-    // else if(result?.ok) {
-    //   setError('')
-    //   router.push('/dashboards/analytics')
-    // }
+    setLoading(true);
+    const result = await signIn('credentials' , {
+      email,
+      password,
+      redirect : false
+    })
+    setLoading(false)
+    if(result?.error == 'User does not exist') setError('.اکانتی با این شناسه وجود ندارد')
+    else if(result?.error == 'Password is incorrect') setError('.پسورد اشتباه است')
+    else if(result?.ok) {
+      setError('')
+      router.push('/dashboards/analytics')
+    }
   }
 
   // const imageSource = skin === 'bordered' ? 'auth-v2-login-illustration-bordered' : 'auth-v2-login-illustration'
