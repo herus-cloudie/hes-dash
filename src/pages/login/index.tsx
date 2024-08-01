@@ -26,7 +26,6 @@ import MuiFormControlLabel, { FormControlLabelProps } from '@mui/material/FormCo
 import Icon from 'src/@core/components/icon'
 
 // ** Third Party Imports
-import * as yup from 'yup'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
@@ -43,6 +42,7 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 import FooterIllustrationsV2 from 'src/views/pages/auth/FooterIllustrationsV2'
 import { useRouter } from 'next/navigation'
 import Loader from 'src/@core/components/spinner/loader'
+import { loginCredentialSchema } from 'src/constant'
 
 // ** Styled Components
 const LoginIllustrationWrapper = styled(Box)<BoxProps>(({ theme }) => ({
@@ -94,10 +94,6 @@ const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(({ t
   }
 }))
 
-const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().min(5).required()
-})
 
 const defaultValues = {
   password: '',
@@ -132,7 +128,7 @@ const LoginPage = () => {
   } = useForm({
     defaultValues,
     mode: 'onBlur',
-    resolver: yupResolver(schema)
+    resolver: yupResolver(loginCredentialSchema)
   })
 
   const onSubmit = async (data: FormData) => {
@@ -154,8 +150,6 @@ const LoginPage = () => {
     }
   }
 
-  // const imageSource = skin === 'bordered' ? 'auth-v2-login-illustration-bordered' : 'auth-v2-login-illustration'
-
   return (
     <div dir="ltr">
       <Box className='content-right'>
@@ -165,9 +159,6 @@ const LoginPage = () => {
             <LoginIllustration
               alt='login-illustration'
               src={`/images/pages/test2.png`}
-              
-              // test2.png
-              // src={`/images/pages/${imageSource}-${theme.palette.mode}.png`}
             />
           </LoginIllustrationWrapper>
           <FooterIllustrationsV2 />
@@ -354,7 +345,7 @@ const LoginPage = () => {
                   : <Button  fullWidth size='large' type='submit' variant='contained' sx={{ mb: 7 }}>
                    ورود
                   </Button>}
-              <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
                 <Typography href='/register' component={Link} sx={{ color: 'primary.main', textDecoration: 'none' }}>
                   ایجاد حساب
                 </Typography>
