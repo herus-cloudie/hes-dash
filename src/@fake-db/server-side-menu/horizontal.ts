@@ -17,7 +17,7 @@ const navigation: HorizontalNavItemsType = [
       {
         icon: 'mdi:chart-timeline-variant',
         title: 'Analytics',
-        path: '/dashboards/analytics'
+        path: '/dashboards/main'
       },
       {
         icon: 'mdi:cart-outline',

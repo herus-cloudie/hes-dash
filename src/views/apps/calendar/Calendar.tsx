@@ -55,7 +55,7 @@ const Calendar = (props: CalendarType) => {
       setCalendarApi(calendarRef.current?.getApi())
     }
   }, [calendarApi, setCalendarApi])
-  console.log({store , event : store.events})
+  
   if (store) {
     // ** calendarOptions(Props)
     const calendarOptions = {

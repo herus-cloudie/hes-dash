@@ -68,7 +68,7 @@ const defaultSuggestionsData: DefaultSuggestionsType[] = [
       {
         icon: 'mdi:poll',
         suggestion: 'Analytics',
-        link: '/dashboards/analytics'
+        link: '/dashboards/main'
       },
       {
         icon: 'mdi:chart-bubble',

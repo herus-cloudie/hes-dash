@@ -31,7 +31,7 @@ const AuthGuard = (props: AuthGuardProps) => {
     if (status === 'authenticated') {
       setState(false)
       if (!isProtectedRoute) {
-        router.replace('/dashboards/analytics')
+        router.replace('/dashboards/main')
       }
     } else {
       if (isProtectedRoute) {

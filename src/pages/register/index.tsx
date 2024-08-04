@@ -133,10 +133,8 @@ const Register = () => {
           headers : {'Content-Type': 'application/json'}
         })
         const result = await sendReq.json();
-        console.log(result)
 
         setLoading(false)
-        console.log(sendReq)
         if(result.status == 'success'){
           setError('')
           router.push('/login')

@@ -146,7 +146,7 @@ const LoginPage = () => {
     else if(result?.error == 'Password is incorrect') setError('.پسورد اشتباه است')
     else if(result?.ok) {
       setError('')
-      router.push('/dashboards/analytics')
+      router.push('/dashboards/main')
     }
   }
 

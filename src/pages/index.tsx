@@ -7,7 +7,7 @@ export default function HomePage(){
 export async function getServerSideProps() {
     return {
       redirect: {
-        destination: '/dashboards/analytics',
+        destination: '/dashboards/main',
         permanent: false,
       },
     }

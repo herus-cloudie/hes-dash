@@ -75,50 +75,50 @@ const notifications: NotificationsType[] = [
 
 const shortcuts: ShortcutsType[] = [
   {
-    title: 'Calendar',
+    title: 'تقویم',
     url: '/apps/calendar',
-    subtitle: 'Appointments',
+    subtitle: 'وقت تعيين شده',
     icon: 'mdi:calendar-month-outline'
   },
   {
-    title: 'Invoice App',
+    title: ' صورتحساب',
     url: '/apps/invoice/list',
-    subtitle: 'Manage Accounts',
+    subtitle: 'مدیریت حساب ها',
     icon: 'mdi:receipt-text-outline'
   },
   {
-    title: 'Users',
+    title: 'کاربران',
     url: '/apps/user/list',
-    subtitle: 'Manage Users',
+    subtitle: 'مدیریت کاربران',
     icon: 'mdi:account-outline'
   },
   {
     url: '/apps/roles',
-    title: 'Role Management',
-    subtitle: 'Permissions',
+    title: 'قوانین',
+    subtitle: 'مجوزها',
     icon: 'mdi:shield-check-outline'
   },
   {
     url: '/',
-    title: 'Dashboard',
+    title: 'داشبورد',
     icon: 'mdi:chart-pie',
-    subtitle: 'User Dashboard'
+    subtitle: 'داشبورد کاربر'
   },
   {
-    title: 'Settings',
+    title: 'تنظیمات',
     icon: 'mdi:cog-outline',
-    subtitle: 'Account Settings',
+    subtitle: 'تنظیمات حساب',
     url: '/pages/account-settings/account'
   },
   {
-    title: 'Help Center',
-    subtitle: 'FAQs & Articles',
+    title: 'راهنمایی و کمک',
+    subtitle: 'سوالات و مقالات',
     icon: 'mdi:help-circle-outline',
     url: '/pages/help-center'
   },
   {
-    title: 'Dialogs',
-    subtitle: 'Useful Dialogs',
+    title: 'گفتگوها',
+    subtitle: 'گفتگوهای پراستفاده',
     icon: 'mdi:window-maximize',
     url: '/pages/dialog-examples'
   }
