@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 const useCheckMeta = () => {
-    const [status , setStatus] = useState<'notEntered' | 'pending' | 'success'>('pending');
+    const [status , setStatus] = useState<'notEntered' | 'pending' | 'success'>('notEntered');
     const [isLoading , setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {

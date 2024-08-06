@@ -31,7 +31,7 @@ import useCheckMeta from 'src/hooks/useCheckMeta'
 const AnalyticsDashboard = () => {  
   const theme = useTheme();
 
-  const {isLoading , status} = useCheckMeta();
+  const {status} = useCheckMeta();
 
   const { series , seriess , optionss , options} = chartData(theme)
   const average = (+series[0].data[0] / series[1].data[0]).toFixed(2);

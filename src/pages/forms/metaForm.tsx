@@ -26,7 +26,7 @@ const MetaForm = () => {
     
       const onSubmit = async (data: any) => {
         const { accountNumber , investPassword , serverName } = data;
-        console.log(accountNumber , investPassword , serverName)
+        console.log(accountNumber , investPassword , serverName , status)
         setStatus('pending')
         
         // setLoading(true);
@@ -53,6 +53,7 @@ const MetaForm = () => {
     mode: 'onBlur',
     resolver: yupResolver(brokerCredentialSchema)
     })
+    
   return (
     <Box sx={{width: '100%', textAlign : 'center' , fontSize : '27px' , display : 'flex' , flexDirection : 'column' , alignItems : 'center' ,  justifyContent : 'center' , top : 0 , left : 0 , height : '100%'}}>
         <p style={{fontWeight : 700}}>تکمیل اطلاعات حساب متا تریدر</p>

@@ -1,6 +1,6 @@
 // ** Next Import
 import Link from 'next/link'
-import Image from 'next/image'
+
 // ** MUI Imports
 import IconButton from '@mui/material/IconButton'
 import Box, { BoxProps } from '@mui/material/Box'
