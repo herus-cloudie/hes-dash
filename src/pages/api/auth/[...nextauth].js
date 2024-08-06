@@ -1,6 +1,8 @@
 import NextAuth from "next-auth"
 
 import CredentialsProvider from 'next-auth/providers/credentials';
+import GithubProvider from "next-auth/providers/github"
+import GoogleProvider from "next-auth/providers/google"
 
 import { compare } from 'bcryptjs';
 import mongoose from "mongoose";
@@ -59,7 +61,11 @@ export const AuthOptions = {
         return { email: email, userName: user.userName  };
       },
     }),
-  ],
+    GithubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET ,
+  }),
+],
 };
 
 export default NextAuth(AuthOptions)

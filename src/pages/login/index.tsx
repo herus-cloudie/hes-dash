@@ -384,7 +384,7 @@ const LoginPage = () => {
                   onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}
                   sx={{ color: theme => (theme.palette.mode === 'light' ? '#272727' : 'grey.300') }}
                 >
-                  <Icon icon='mdi:github' />
+                  <Icon icon='mdi:github' onClick={() => signIn('github')} />
                 </IconButton>
                 <IconButton
                   href='/'
