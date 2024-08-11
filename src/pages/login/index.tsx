@@ -339,7 +339,7 @@ const LoginPage = () => {
               </Box>
               {error && <p style={{color : '#ff3d3d' , textAlign : 'center'}}>{error}</p>} 
               {loading ? 
-                  <div style={{textAlign : 'center' , display : 'flex' , justifyContent : 'center' , margin : '15px 0'}}>
+                  <div style={{textAlign : 'center' , display : 'flex' , justifyContent : 'center' , margin : '-35px 0px 35px'}}>
                     <Loader />
                   </div>
                   : <Button  fullWidth size='large' type='submit' variant='contained' sx={{ mb: 7 }}>

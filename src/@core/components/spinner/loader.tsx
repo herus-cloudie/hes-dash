@@ -1,9 +1,13 @@
 const Loader = () => {
   return (
-    <div style={{alignItems : 'center' , display : 'flex'}} className="loader">
-        <span className="loader-text">loading</span>
-        <span className="load"></span>
-    </div>
+<div className="loader">
+  <div className="loader__bar"></div>
+  <div className="loader__bar"></div>
+  <div className="loader__bar"></div>
+  <div className="loader__bar"></div>
+  <div className="loader__bar"></div>
+  <div className="loader__ball"></div>
+</div>
   )
 }
 
