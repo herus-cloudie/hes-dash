@@ -15,6 +15,7 @@ import useCheckMeta from 'src/hooks/useCheckMeta';
 import { chartData } from 'src/constant';
 import Icon from 'src/@core/components/icon';
 import Spinner from 'src/@core/components/spinner'
+import { Data } from 'src/constant/data';
 
 const AnalyticsDashboard = () => {
   const { status } = useCheckMeta();
@@ -27,8 +28,14 @@ const AnalyticsDashboard = () => {
 
   const theme = useTheme();
   const { series, seriess, optionss, options } = chartData(theme);
-  const average = (+series[0].data[0] / series[1].data[0]).toFixed(2);
+  const {balance , total_net_profit , profit_trades_percent , loss_trades_percent , position_table_data , gross_profit , gross_loss ,total_win_count 
+    , total_trades , break_even , total_loss_count , daily_profits} = Data;
+ 
+  const allProfit = position_table_data.map(item => item.profit)
 
+  const positiveProfit = allProfit.filter(profit => profit >= 0)
+  const negativeProfit = allProfit.filter(profit => profit < 0)
+  
   return (
     <>
       {state === 'notEntered' ? (
@@ -39,7 +46,7 @@ const AnalyticsDashboard = () => {
         <ApexChartWrapper>
           <Grid container spacing={6} className='match-height'>
             <Grid item xs={12} sm={6} xl={2.4}>
-              <ApexDonutChart title='Trade win' colors={['#72E128', '#2c2cff', '#FF4D49']} labels={['win', 'break even', 'loss']} series={[7, 2, 18]} avrgNumb='25%' />
+              <ApexDonutChart title='Trade win' colors={['#72E128', '#2c2cff', '#FF4D49']} labels={['win', 'break even', 'loss']} series={[+total_win_count, +break_even, +total_loss_count]} avrgNumb={`${((+total_win_count / +total_trades) * 100).toFixed(1).toString()} %`} />
             </Grid>
             <Grid item xs={12} sm={6} xl={2.4}>
               <Card dir='ltr'>
@@ -48,18 +55,18 @@ const AnalyticsDashboard = () => {
                   <div style={{ paddingRight: '10px' }}>
                     <ReactApexcharts type='bar' height={100} series={series} options={options} />
                   </div>
-                  <p style={{ fontSize: '1.82rem', textAlign: 'center' }}>{Math.abs(+average)}</p>
+                  <p style={{ fontSize: '1.82rem', textAlign: 'center' }}>{Math.abs(+gross_profit / +gross_loss).toFixed(2)}</p>
                 </div>
               </Card>
             </Grid>
             <Grid item xs={12} sm={6} xl={2.4}>
-              <ApexDonutChart title='Day win' colors={['#72E128', '#FF4D49']} labels={['win', 'loss']} series={[22, 78]} avrgNumb='1.6' />
+              <ApexDonutChart title='Day win' colors={['#72E128',  '#FF4D49']} labels={['win', 'loss']} series={[positiveProfit.length , negativeProfit.length]} avrgNumb={positiveProfit.length.toString()} />
             </Grid>
             <Grid item xs={12} sm={6} xl={2.4}>
-              <CardStatisticsVertical stats='$9,820' color='success' trendNumber='+22%' title='Net P&L' chipText='یک ماه گذشته' icon={<Icon icon="solar:dollar-bold" />} />
+              <CardStatisticsVertical trend={+total_net_profit >= 0 ? 'positive' : 'negative'} stats={total_net_profit} trendNumber={+((+total_net_profit / +balance) * 100).toFixed(1)} title='Net P&L' chipText='یک ماه گذشته' icon={<Icon icon="solar:dollar-bold" />} />
             </Grid>
             <Grid item xs={12} sm={6} xl={2.4}>
-              <ApexDonutChart title='Profit Factor' colors={['#72E128', '#FF4D49']} labels={['win', 'loss']} series={[68, 32]} avrgNumb='1.6' />
+              <ApexDonutChart title='Profit Factor' colors={[ '#2c2cff', '#FF4D49','#72E128']} labels={['break even', 'loss','win' ]} series={[+break_even, +total_loss_count , +total_win_count ]} avrgNumb={(+profit_trades_percent / +loss_trades_percent).toFixed(2)} />
             </Grid>
             <Grid item xs={12} sm={6} lg={6} xl={4}>
               <ApexAreaChart />

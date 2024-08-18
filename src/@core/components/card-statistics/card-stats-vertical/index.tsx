@@ -17,26 +17,27 @@ import { CardStatsVerticalProps } from 'src/@core/components/card-statistics/typ
 const CardStatsVertical = (props: CardStatsVerticalProps) => {
   // ** Props
   const { title, color, icon, stats, chipText, trendNumber, trend = 'positive' } = props
-
+  const dynamicStyleIcon = trend == 'positive' ? 'success' : 'error' ;
+  const dynamicStyleNumb = trend == 'positive' ? '#72E128' : 'red' ;
   return (
     <Card>
       <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ mb: 6, width: '100%', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-          <CustomAvatar skin='light' variant='rounded' color={color}>
+          <CustomAvatar skin='light' variant='rounded' color={dynamicStyleIcon}>
             {icon}
           </CustomAvatar>
           <Box
-            sx={{ display: 'flex', alignItems: 'center', color: trend === 'positive' ? 'success.main' : 'error.main' }}
+            sx={{ display: 'flex', alignItems: 'center', color: dynamicStyleNumb }}
           >
-            <Typography variant='subtitle2' sx={{ color: trend === 'positive' ? 'success.main' : 'error.main' }}>
-              {trendNumber}
+            <Typography dir='ltr' variant='subtitle2' sx={{ color: dynamicStyleNumb}}>
+              {trendNumber}%
             </Typography>
-            <Icon icon={trend === 'positive' ? 'mdi:chevron-up' : 'mdi:chevron-down'} fontSize='1.25rem' />
+            <Icon icon={trend == 'positive' ? 'mdi:chevron-up' : 'mdi:chevron-down'} fontSize='1.25rem' />
           </Box>
         </Box>
         <div style={{display : 'flex' , height : '150px' , marginTop : '-10px' , flexDirection : 'column-reverse' , justifyContent : 'flex-end' , alignItems : 'flex-end'}}>
-          <Typography variant='h4' sx={{ mb: 1 , color : '#72E128'}}>
-            {stats}
+          <Typography dir='ltr' variant='h4' sx={{ mb: 1 , color : dynamicStyleNumb}}>
+            {stats}$
           </Typography>
           <Typography variant='h4' sx={{ mb: -5 }}>
             <p>{title}</p>

@@ -1,133 +1,49 @@
 // ** Mock Adapter
 import mock from 'src/@fake-db/mock'
+import { Data } from 'src/constant/data'
 
 // ** Types
 import { EventType } from 'src/types/apps/calendarTypes'
 
-const date = new Date()
+const { position_table_data } = Data;
 
-// const nextDay = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+const events = position_table_data.map((item , index) => {
 
-const nextMonth =
-  date.getMonth() === 11 ? new Date(date.getFullYear() + 1, 0, 1) : new Date(date.getFullYear(), date.getMonth() + 1, 1)
+  const dateStartParts = item.time.split(" ")[0].split(".");
+  const timeStartParts = item.time.split(" ")[1].split(":");
+  
+  const startYear = parseInt(dateStartParts[0], 10);
+  const startMonth = parseInt(dateStartParts[1], 10) - 1; 
+  const startDay = parseInt(dateStartParts[2], 10);
+  const startHour = parseInt(timeStartParts[0], 10);
+  const startMinute = parseInt(timeStartParts[1], 10);
 
-const prevMonth =
-  date.getMonth() === 11 ? new Date(date.getFullYear() - 1, 0, 1) : new Date(date.getFullYear(), date.getMonth() - 1, 1)
+  const dateFinishParts = item.time_2.split(" ")[0].split(".");
+  const timeFinishParts = item.time_2.split(" ")[1].split(":");
+  
+  const finishYear = parseInt(dateFinishParts[0], 10);
+  const finishMonth = parseInt(dateFinishParts[1], 10) - 1; 
+  const finishDay = parseInt(dateFinishParts[2], 10);
+  const finishHour = parseInt(timeFinishParts[0], 10);
+  const finishMinute = parseInt(timeFinishParts[1], 10);
 
-const data: { events: EventType[] } = {
-  events: [
-    {
-      id: 1,
-      url: '',
-      title: "80$-",
-      start: new Date(date.getFullYear(), date.getMonth() + 1, -3),
-      end: new Date(date.getFullYear(), date.getMonth() + 1, -2),
-      allDay: true,
-      extendedProps: {
-        calendar: 'Personal'
-      }
-    },
-    {
-      id: 2,
-      url: '',
-      title: "280.83$-",
-      start: new Date(date.getFullYear(), date.getMonth() + 1, -11),
-      end: new Date(date.getFullYear(), date.getMonth() + 1, -10),
-      allDay: true,
-      extendedProps: {
-        calendar: 'Personal'
-      }
-    },
-    {
-      id: 3,
-      url: '',
-      title: "45$-",
-      allDay: true,
-      start: new Date(date.getFullYear(), date.getMonth() + 1, -9),
-      end: new Date(date.getFullYear(), date.getMonth() + 1, -8),
-      extendedProps: {
-        calendar: 'Personal'
-      }
-    },
-    {
-      id: 4,
-      url: '',
-      title: "289$",
-      start: new Date(date.getFullYear(), date.getMonth() + 1, -13),
-      end: new Date(date.getFullYear(), date.getMonth() + 1, -12),
-      allDay: true,
-      extendedProps: {
-        calendar: 'Holiday'
-      }
-    },
-    {
-      id: 5,
-      url: '',
-      title: "250$",
-      start: new Date(date.getFullYear(), date.getMonth() + 1, -21),
-      end: new Date(date.getFullYear(), date.getMonth() + 1, -20),
-      allDay: true,
-      extendedProps: {
-        calendar: 'Holiday'
-      }
-    },
-    {
-      id: 6,
-      url: '',
-      title: "18.3$",
-      start: new Date(date.getFullYear(), date.getMonth() + 1, -6),
-      end: new Date(date.getFullYear(), date.getMonth() + 1, -5),
-      allDay: true,
-      extendedProps: {
-        calendar: 'Holiday'
-      }
-    },
-    {
-      id: 7,
-      url: '',
-      title: "28$",
-      start: new Date(date.getFullYear(), date.getMonth() + 1, -4),
-      end: new Date(date.getFullYear(), date.getMonth() + 1, -3),
-      allDay: true,
-      extendedProps: {
-        calendar: 'Holiday'
-      }
-    },
-    {
-      id: 8,
-      url: '',
-      title: "40.7$-",
-      start: new Date(date.getFullYear(), date.getMonth() + 1, -53),
-      end: new Date(date.getFullYear(), date.getMonth() + 1, -52),
-      allDay: true,
-      extendedProps: {
-        calendar: 'Personal'
-      }
-    },
-    {
-      id: 9,
-      url: '',
-      title: "90.2$-",
-      start: nextMonth,
-      end: nextMonth,
-      allDay: true,
-      extendedProps: {
-        calendar: 'Personal'
-      }
-    },
-    {
-      id: 10,
-      url: '',
-      title: "80$",
-      start: prevMonth,
-      end: prevMonth,
-      allDay: true,
-      extendedProps: {
-        calendar: 'Holiday'
-      }
+  return {
+    id: index,
+    url: '',
+    title: `${item.profit} $`,
+    start: new Date(startYear,  startMonth , startDay , startHour, startMinute),
+    end: new Date(finishYear,  finishMonth, finishDay , finishHour, finishMinute),
+    allDay: false,
+    extendedProps: {
+      calendar: item.profit >= 0 ? 'Holiday' : 'Personal',
+      description : item.symbol
     }
-  ]
-}
+  }
+
+})
+
+const data: { events: EventType[] } = {events}
+
 
 // ------------------------------------------------
 // GET: Return calendar events

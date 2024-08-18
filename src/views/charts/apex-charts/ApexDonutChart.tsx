@@ -10,15 +10,10 @@ import { ApexOptions } from 'apexcharts'
 // ** Component Import
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
-// const donutColors = {
-//   series2: '#FF4D49',
-//   series3: '#72E128',
-// }
-
 const ApexDonutChart = ({title , colors , labels , series , avrgNumb} : {title : string , colors : string[] , labels : string[] , series : number[] , avrgNumb : string}) => {
-  // ** Hook
-  const theme = useTheme()
 
+
+  const theme = useTheme();
   const options: ApexOptions = {
     stroke: { width: 0 },
     labels,

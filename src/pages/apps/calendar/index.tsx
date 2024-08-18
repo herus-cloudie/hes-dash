@@ -37,10 +37,10 @@ import {
 
 // ** CalendarColors
 const calendarsColor: CalendarColors = {
-  Personal: 'error',
+  Negative: 'error',
   Business: 'primary',
   Family: 'warning',
-  Holiday: 'success',
+  Positive: 'success',
   ETC: 'info'
 }
 

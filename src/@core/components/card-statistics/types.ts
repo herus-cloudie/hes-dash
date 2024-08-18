@@ -19,7 +19,7 @@ export type CardStatsVerticalProps = {
   icon: ReactNode
   chipText: string
   color?: ThemeColor
-  trendNumber: string
+  trendNumber: string | number
   trend?: 'positive' | 'negative'
 }
 

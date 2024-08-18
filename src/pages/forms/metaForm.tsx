@@ -7,8 +7,13 @@ import { BrokerType } from 'src/types/forms/reactDatepickerTypes';
 import ComboBox from '../components/comboBox';
 import { useSession } from 'next-auth/react';
 import Loader from 'src/@core/components/spinner/loader';
+import { useTheme } from '@mui/material/styles';
 
 const MetaForm = ({setState} : any) => {
+  
+  const theme = useTheme();
+  console.log(theme)
+
   const [err , setErr] = useState('');
   const [loading , setLoading] = useState<boolean>(false);
 
@@ -65,6 +70,11 @@ const MetaForm = ({setState} : any) => {
 
   return (
     <Box sx={{ width: '100%', textAlign: 'center', fontSize: '27px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+      {
+        theme.palette.mode == 'light' 
+        ? <img className='step2' src='/images/2.png' width={330} />
+        : <img className='step2' src='/images/2w.png' width={330} />
+      }
       <p style={{ fontWeight: 700 }}>تکمیل اطلاعات حساب متا تریدر</p>
       <div style={{ width: '330px' }}>
         <form onSubmit={handleSubmit(onSubmit)}>

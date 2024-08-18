@@ -4,8 +4,17 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
 
-// ** Data Import
-import { rows } from 'src/@fake-db/table/static-data'
+import { Data } from "src/constant/data"
+
+const {position_table_data} = Data;
+
+const rows = position_table_data.map(item => {
+  return {
+    symbol : item.symbol,
+    time : item.time,
+    id: `${item.profit} $`,
+  }
+})
 
 const columns: GridColDef[] = [
   {
@@ -17,13 +26,13 @@ const columns: GridColDef[] = [
   {
     flex: 0.2,
     minWidth: 120,
-    field: 'full_name',
+    field: 'symbol',
     headerName: 'Symbol'
   },
   {
     flex: 0.2,
     minWidth: 120,
-    field: 'email',
+    field: 'time',
     headerName: 'Close Date'
   },
 ]

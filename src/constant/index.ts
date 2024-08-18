@@ -1,17 +1,22 @@
 import { ApexOptions } from "apexcharts"
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 import * as yup from 'yup'
+import { Data } from "./data"
 
 function chartData(theme : any){
-
+    const {gross_profit , gross_loss , position_table_data} = Data;
+    const allProfit = position_table_data.map(item => item.profit)
+    const aboveProfit = allProfit.map(profit => profit >= 0 ? +profit : '')
+    const belowProfit = allProfit.map(profit => profit < 0 ? +profit : '')
+    console.log(allProfit)
     const series = [
         {
         name: 'Profit',
-        data: [1055]
+        data: [+gross_profit]
         },
         {
         name: 'Loss',
-        data: [-238]
+        data: [+gross_loss]
         }
     ]
     const options: ApexOptions = {
@@ -75,11 +80,11 @@ function chartData(theme : any){
     const seriess = [
     {
         name: 'Above',
-        data: [83 , 153 , , , , 45 , 320]
+        data: aboveProfit
     },
     {
         name: 'Below',
-        data: [ , , -216 , -282 , -5 , , ]
+        data: belowProfit
     }
     ]
     const optionss: ApexOptions = {
