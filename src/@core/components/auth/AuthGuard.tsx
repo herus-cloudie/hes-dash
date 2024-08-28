@@ -5,8 +5,8 @@ import { ReactNode, ReactElement, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // ** Hooks Import
-import NotAuthorized from 'src/pages/401'
 import { useSession } from 'next-auth/react'
+import Loader from '../spinner/loader'
 
 interface AuthGuardProps {
   children: ReactNode
@@ -50,7 +50,7 @@ const AuthGuard = (props: AuthGuardProps) => {
     return fallback
   }
 
-  return state ? <NotAuthorized /> : <>{children}</>
+  return !state ? <>{children}</> : <Loader />
 }
 
 export default AuthGuard

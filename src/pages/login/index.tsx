@@ -192,8 +192,8 @@ const LoginPage = () => {
               </Typography>
               {
                 theme.palette.mode == 'light' 
-                ? <img src='/images/logos/blue.png' width={40} style={{marginRight : '10px'}}/>
-                : <img src='/images/logos/white.png' width={40} style={{marginRight : '10px'}}/>
+                ? <img src='/images/logos/blue.png' width={35} style={{marginRight : '10px'}}/>
+                : <img src='/images/logos/white.png' width={35} style={{marginRight : '10px'}}/>
               }
 
             </Box>

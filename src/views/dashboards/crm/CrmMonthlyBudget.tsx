@@ -18,18 +18,19 @@ const CrmMonthlyBudget = () => {
 
   const options: ApexOptions = {
     chart: {
-      offsetY: -8,
+      offsetY: 20,
+      offsetX : -20,
       parentHeightOffset: 0,
-      toolbar: { show: false }
+      toolbar: { show: true , offsetX : -20}
     },
     tooltip: { enabled: false },
     dataLabels: { enabled: false },
     stroke: {
-      width: 5,
+      width: 3,
       curve: 'smooth'
     },
     grid: {
-      show: false,
+      show: theme.palette.mode == 'light' ? true : false,
       padding: {
         left: 10,
         top: -24,
@@ -73,7 +74,7 @@ const CrmMonthlyBudget = () => {
       axisTicks: { show: false },
       axisBorder: { show: false }
     },
-    yaxis: { show: false },
+    yaxis: { show: true },
     markers: {
       size: 1,
       offsetY: 1,
@@ -95,28 +96,15 @@ const CrmMonthlyBudget = () => {
   }
 
   return (
-    <Card>
-      <CardHeader
-        title='Monthly Budget'
-        action={
-          <OptionsMenu
-            options={['Refresh', 'Edit', 'Update']}
-            iconButtonProps={{ size: 'small', className: 'card-more-options' }}
-          />
-        }
-      />
-      <CardContent>
+    <div>
         <ReactApexcharts
           type='area'
-          height={262}
+          height={200}
+          width={280}
           options={options}
-          series={[{ name: 'Traffic Rate', data: [0, 85, 25, 125, 90, 250, 200, 350] }]}
+          series={[{ name: 'Traffic Rate', data: [0, 85, 25, 125, 90, 550, 200, 350] }]}
         />
-        <Typography variant='body2'>
-          Last month you had $2.42 expense transactions, 12 savings entries and 4 bills.
-        </Typography>
-      </CardContent>
-    </Card>
+    </div>
   )
 }
 

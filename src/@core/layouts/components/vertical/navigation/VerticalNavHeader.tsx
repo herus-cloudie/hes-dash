@@ -128,7 +128,11 @@ const VerticalNavHeader = (props: Props) => {
         userNavMenuBranding(props)
       ) : (
         <LinkStyled href='/'>
-          <img src='/images/logos/logo.png' width={50} height={50}/>
+          {
+            theme.palette.mode == 'light' 
+            ?<img src='/images/logos/blue.png' width={35} height={35}/>
+            :  <img src='/images/logos/white.png' width={35} height={35}/>
+          }
           {/* <Image priority src={'/images/logos/logo.png'} alt='logo' width={50} height={50}/> */}
           {/* <svg width={40} fill='none' height={22} viewBox='0 0 268 150' xmlns='http://www.w3.org/2000/svg'>
             <rect

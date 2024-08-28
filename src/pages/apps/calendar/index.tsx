@@ -19,7 +19,7 @@ import { CalendarColors, CalendarFiltersType } from 'src/types/apps/calendarType
 // ** FullCalendar & App Components Imports
 import Calendar from 'src/views/apps/calendar/Calendar'
 
-// import SidebarLeft from 'src/views/apps/calendar/SidebarLeft'
+import SidebarLeft from 'src/views/apps/calendar/SidebarLeft'
 import CalendarWrapper from 'src/@core/styles/libs/fullcalendar'
 import AddEventSidebar from 'src/views/apps/calendar/AddEventSidebar'
 
@@ -31,16 +31,16 @@ import {
   updateEvent,
   handleSelectEvent,
   
-  // handleAllCalendars,
-  // handleCalendarsUpdate
+  handleAllCalendars,
+  handleCalendarsUpdate
 } from 'src/store/apps/calendar'
 
 // ** CalendarColors
 const calendarsColor: CalendarColors = {
-  Negative: 'error',
+  Personal: 'error',
   Business: 'primary',
   Family: 'warning',
-  Positive: 'success',
+  Holiday: 'success',
   ETC: 'info'
 }
 
@@ -56,7 +56,7 @@ const AppCalendar = () => {
   const store = useSelector((state: RootState) => state.calendar)
 
   // ** Vars
-  // const leftSidebarWidth = 260
+  const leftSidebarWidth = 260
   const addEventSidebarWidth = 400
   const { skin } = settings
   const mdAbove = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
@@ -77,7 +77,7 @@ const AppCalendar = () => {
         ...(skin === 'bordered' && { border: theme => `1px solid ${theme.palette.divider}` })
       }}
     >
-      {/* <SidebarLeft
+      <SidebarLeft
         store={store}
         mdAbove={mdAbove}
         dispatch={dispatch}
@@ -89,7 +89,7 @@ const AppCalendar = () => {
         handleCalendarsUpdate={handleCalendarsUpdate}
         handleLeftSidebarToggle={handleLeftSidebarToggle}
         handleAddEventSidebarToggle={handleAddEventSidebarToggle}
-      /> */}
+      />
       <Box
         sx={{
           px: 5,

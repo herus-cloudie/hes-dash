@@ -11,8 +11,8 @@ export type EventDateType = Date | null | undefined
 export type CalendarColors = {
   ETC: ThemeColor
   Family: ThemeColor
-  Positive: ThemeColor
-  Negative: ThemeColor
+  Holiday: ThemeColor
+  Personal: ThemeColor
   Business: ThemeColor
 }
 

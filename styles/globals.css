@@ -1174,24 +1174,6 @@ code[class*='language-'] {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* .step{
-  margin-top: '-45px';
-  margin-bottom : '45px' ;
-  padding-right : '15px';
-} */
-/* 
-@media (min-width : 1024px) {
-  .step{
-    margin-top: -50px;
-    margin-bottom: 50px;
-  }
-}
-@media (min-width : 768px) {
-  .step{
-      margin-top: -50px;
-      margin-bottom: 50px;
-  }
-}*/
 @media (min-width : 900px) {
   .step{
     margin-top: 50px; 
@@ -1202,9 +1184,22 @@ code[class*='language-'] {
     margin-bottom: 0px; 
   }
 }  
+
 .step{
   padding: 30px 30px 0;
 }
+
 .step2{
   padding: 30px 0px 30px;
+}
+
+.comboAcc{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+@media (min-width : 640px) {
+  .comboAcc{
+    margin-bottom: 40px;
+  }
 }

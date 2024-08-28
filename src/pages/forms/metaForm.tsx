@@ -12,7 +12,6 @@ import { useTheme } from '@mui/material/styles';
 const MetaForm = ({setState} : any) => {
   
   const theme = useTheme();
-  console.log(theme)
 
   const [err , setErr] = useState('');
   const [loading , setLoading] = useState<boolean>(false);
@@ -49,7 +48,7 @@ const MetaForm = ({setState} : any) => {
         serverName,
         broker,
         metaTraderVersion,
-        email 
+        email
       })
   }).then(response => response.json())
     .then(({message}) => {

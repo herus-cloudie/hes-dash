@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
-import { useTheme, Card } from '@mui/material';
+import { useTheme, Card, TextField, Autocomplete } from '@mui/material';
 import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts';
 import ApexDonutChart from 'src/views/charts/apex-charts/ApexDonutChart';
 import ReactApexcharts from 'src/@core/components/react-apexcharts';
@@ -16,6 +16,7 @@ import { chartData } from 'src/constant';
 import Icon from 'src/@core/components/icon';
 import Spinner from 'src/@core/components/spinner'
 import { Data } from 'src/constant/data';
+import ComboBox from 'src/pages/components/comboBox';
 
 const AnalyticsDashboard = () => {
   const { status } = useCheckMeta();
@@ -44,6 +45,14 @@ const AnalyticsDashboard = () => {
       : state === 'loading' ? <Spinner />
       :(
         <ApexChartWrapper>
+            <Autocomplete
+              options={['452443 (MT 4)' , '766685 (MT 5)']}
+              getOptionLabel={(option: any) => option}
+              value={'452443 (MT 4)'}
+              className='comboAcc'
+              onChange={(e, newValue) => console.log(e , newValue)}
+              renderInput={(params) => <TextField {...params} label={'حساب متاتریدر'} variant="standard" />}
+            />
           <Grid container spacing={6} className='match-height'>
             <Grid item xs={12} sm={6} xl={2.4}>
               <ApexDonutChart title='Trade win' colors={['#72E128', '#2c2cff', '#FF4D49']} labels={['win', 'break even', 'loss']} series={[+total_win_count, +break_even, +total_loss_count]} avrgNumb={`${((+total_win_count / +total_trades) * 100).toFixed(1).toString()} %`} />
@@ -84,7 +93,7 @@ const AnalyticsDashboard = () => {
             <Grid item xs={12} sm={6} lg={6} xl={4}>
               <AnalyticsPerformance />
             </Grid>
-            <Grid item xs={12} md={8}>
+            <Grid item sm={12}>
               <AppCalendar />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
