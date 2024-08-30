@@ -53,14 +53,12 @@ export default function DailyJournalPopup() {
           <span style={{marginRight : '15px'}}>Tue, Aug 27, 2024</span> <span  style={{color : '#09dd09'}}>Net P&L $0.02</span>
           <hr />
           </Typography>
-          <div style={{display : 'flex' , gap : '35px' , margin : '40px 0'}}>
-            <div>
-                <Grid item xs={12} sm={6} md={4}>
-                <CrmMonthlyBudget />
-                </Grid>
-            </div>
+          <Grid container style={{display : 'flex' , gap : '35px' , margin : '40px 0px 40px 15px'}}>
+            <Grid item sm={12} md={6} lg={2}>
+              <CrmMonthlyBudget />
+            </Grid>
 
-            <Grid sm={12} md={6} lg={3} style={{display :'flex', flexDirection : 'column' , justifyContent : 'space-around',}}>
+            <Grid item sm={12} md={6} lg={2} style={{display :'flex', flexDirection : 'column' , justifyContent : 'space-around', marginLeft : '20px'}}>
                 <div style={{display : 'flex', justifyContent : 'space-around' ,  }}>
                 <span>Total trades</span>
                 <span style={{fontWeight : 700}}>7</span>
@@ -72,7 +70,7 @@ export default function DailyJournalPopup() {
                 </div>
             </Grid>
 
-            <Grid sm={12} md={6} lg={3} style={{display :'flex', flexDirection : 'column' , justifyContent : 'space-around',}}>
+            <Grid item sm={12} md={6} lg={2} style={{display :'flex', flexDirection : 'column' , justifyContent : 'space-around',}}>
                 <div style={{display : 'flex', justifyContent : 'space-around' }}>
                 <span>Winners</span>
                 <span style={{fontWeight : 700}}>3</span>
@@ -84,7 +82,7 @@ export default function DailyJournalPopup() {
                 </div>
             </Grid>
 
-            <Grid sm={12} md={6} lg={3} style={{display :'flex', flexDirection : 'column' , justifyContent : 'space-around',}}>
+            <Grid item sm={12} md={6} lg={2} style={{display :'flex', flexDirection : 'column' , justifyContent : 'space-around',}}>
                 <div style={{display : 'flex', justifyContent : 'space-around'}}>
                 <span>Gross P&L</span>
                 <span style={{fontWeight : 700}}>$62.6</span>
@@ -96,7 +94,7 @@ export default function DailyJournalPopup() {
                 </div>
             </Grid>
             
-            <Grid sm={12} md={6} lg={3} style={{display :'flex', flexDirection : 'column' , justifyContent : 'space-around'}}>
+            <Grid item sm={12} md={6} lg={2} style={{display :'flex', flexDirection : 'column' , justifyContent : 'space-around'}}>
                 <div style={{display : 'flex', justifyContent : 'space-around' }}>
                 <span>Commissions</span>
                 <span style={{fontWeight : 700}}>$25</span>
@@ -107,12 +105,8 @@ export default function DailyJournalPopup() {
                 <span style={{fontWeight : 700}}>4.21</span>
                 </div>
             </Grid>
-            <div className="App">
-
-            </div>
-        </div>
-          <FroalaEditorComponent 
-          
+        </Grid>
+        <FroalaEditorComponent 
           tag='textarea'
           onModelChange={() => console.log('f')}
         />
