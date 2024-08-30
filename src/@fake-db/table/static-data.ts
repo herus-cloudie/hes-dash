@@ -1,5 +1,6 @@
 
 import { Data } from "src/constant/data"
+
 const {position_table_data} = Data;
 
 const rows = position_table_data.map(item => {

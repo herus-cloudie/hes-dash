@@ -16,9 +16,10 @@ import { CardStatsVerticalProps } from 'src/@core/components/card-statistics/typ
 
 const CardStatsVertical = (props: CardStatsVerticalProps) => {
   // ** Props
-  const { title, color, icon, stats, chipText, trendNumber, trend = 'positive' } = props
+  const { title, icon, stats, chipText, trendNumber, trend = 'positive' } = props
   const dynamicStyleIcon = trend == 'positive' ? 'success' : 'error' ;
   const dynamicStyleNumb = trend == 'positive' ? '#72E128' : 'red' ;
+  
   return (
     <Card>
       <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>

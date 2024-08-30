@@ -16,7 +16,6 @@ import { chartData } from 'src/constant';
 import Icon from 'src/@core/components/icon';
 import Spinner from 'src/@core/components/spinner'
 import { Data } from 'src/constant/data';
-import ComboBox from 'src/pages/components/comboBox';
 
 const AnalyticsDashboard = () => {
   const { status } = useCheckMeta();
@@ -30,7 +29,7 @@ const AnalyticsDashboard = () => {
   const theme = useTheme();
   const { series, seriess, optionss, options } = chartData(theme);
   const {balance , total_net_profit , profit_trades_percent , loss_trades_percent , position_table_data , gross_profit , gross_loss ,total_win_count 
-    , total_trades , break_even , total_loss_count , daily_profits} = Data;
+    , total_trades , break_even , total_loss_count } = Data;
  
   const allProfit = position_table_data.map(item => item.profit)
 

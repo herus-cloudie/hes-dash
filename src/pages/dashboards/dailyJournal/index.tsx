@@ -1,7 +1,7 @@
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
 
-import { Button, Card } from "@mui/material"
+import { Card } from "@mui/material"
 
 // ** Icon Imports
 // import Icon from 'src/@core/components/icon'
@@ -31,12 +31,7 @@ import { useTheme } from '@mui/system'
 // import CrmSocialNetworkVisits from 'src/views/dashboards/crm/CrmSocialNetworkVisits'
 // import CrmMostSalesInCountries from 'src/views/dashboards/crm/CrmMostSalesInCountries'
 
-import 'froala-editor/css/froala_style.min.css';
-import 'froala-editor/css/froala_editor.pkgd.min.css';
-
-import FroalaEditorComponent from 'react-froala-wysiwyg';
-import { model } from 'mongoose'
-import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView'
+import DailyJournalPopup from 'src/pages/components/popup/dailyJournalPopup'
 
 const CrmDashboard = () => {
 
@@ -55,7 +50,7 @@ const CrmDashboard = () => {
                   <p style={{color : '#09dd09'}}>Net P&L $43,212</p>
                 </div>
                 <div style={{display : 'flex' , justifyContent : 'space-between' , alignItems : 'center' , gap : '15px'}}>
-                  <Button variant='contained' size='small'>View note</Button>
+                  <DailyJournalPopup />
                   {
                     theme.palette.mode == 'light' ? <Image style={{cursor : 'pointer'}} src={'/images/logos/blue.png'} alt='icon' width={40} height={40}/>
                     : <Image style={{cursor : 'pointer'}} src={'/images/logos/white.png'} alt='icon' width={40} height={40}/>
@@ -123,11 +118,8 @@ const CrmDashboard = () => {
               </div>
             </Card>
           </Grid>
-        </Grid>  
-                        <FroalaEditorComponent 
-                    tag='textarea'
-                    onModelChange={() => console.log('f')}
-                  />
+        </Grid>
+        
         <Grid container spacing={6} className='match-height'>
         <Grid item sm={12} dir="ltr">
           <Card style={{display : 'flex' , flexDirection : 'column' , padding : '10px 20px 30px'}}>
@@ -138,7 +130,7 @@ const CrmDashboard = () => {
                 <p style={{color : '#09dd09'}}>Net P&L $43,212</p>
               </div>
               <div style={{display : 'flex' , justifyContent : 'space-between' , alignItems : 'center' , gap : '15px'}}>
-                <Button variant='contained' size='small'>View note</Button>
+              <DailyJournalPopup />
                 {
                   theme.palette.mode == 'light' ? <Image style={{cursor : 'pointer'}} src={'/images/logos/blue.png'} alt='icon' width={40} height={40}/>
                   : <Image style={{cursor : 'pointer'}} src={'/images/logos/white.png'} alt='icon' width={40} height={40}/>
