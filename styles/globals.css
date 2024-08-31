@@ -92,7 +92,42 @@ code[class*='language-'] {
   -webkit-animation: ball624 4s infinite;
   animation: ball624 4s infinite;
 }
+.dailyText{
+  display: flex;
+}
+.display-response{
+  display: flex;
+  flex-direction: column;
+  justify-content : space-between ;
+  align-items : center ;
+  gap : 15px
+}
+.chart-container{
+  display: flex ;
+  justify-items : center ;
+  justify-content : center ;
+  margin-bottom : 25px;
+}
+@media (min-width : 480px) {
+  .display-response{
+    flex-direction: row;
+  }
+}
+.dynamic-padding{
+  padding: 10px 20px 0px;
+}
+@media (min-width : 900px) {
+  
+  .margin-lg-bottom{
+    margin: 20px 0 65px;
+  }
+}
 
+@media (max-width : 900px) {
+  .dailyText{
+    display: none !important;
+  }
+}
 @keyframes ball624 {
   0% {
     transform: translate(0, 0);

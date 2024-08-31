@@ -14,6 +14,7 @@ const FroalaEditorComponent = dynamic(() => import('react-froala-wysiwyg'), { ss
 import { Icon } from '@iconify/react';
 import { Grid } from '@mui/material';
 import CrmMonthlyBudget from 'src/views/dashboards/crm/CrmMonthlyBudget';
+import DailyJournalCard from 'src/@core/components/dailyJournalCard';
 
 const style = {
   position: 'absolute',
@@ -48,64 +49,13 @@ export default function DailyJournalPopup() {
             <span>Daily Log</span>
             <Icon onClick={handleClose} icon="material-symbols:close" />
           </Typography>
-          <Button style={{margin : '15px 0 20px'}} onClick={handleOpen} variant='contained' size='medium'>View in Notebook</Button>
+          
+          <Button style={{margin : '15px 0 20px'}} onClick={handleOpen} variant='contained' size='medium'>View in Notebook</Button> 
           <Typography style={{marginBottom : '15px'}}>
-          <span style={{marginRight : '15px'}}>Tue, Aug 27, 2024</span> <span  style={{color : '#09dd09'}}>Net P&L $0.02</span>
-          <hr />
+            <span style={{marginRight : '15px'}}>Tue, Aug 27, 2024</span> <span  style={{color : '#09dd09'}}>Net P&L $0.02</span>
+            <hr />
           </Typography>
-          <Grid container style={{display : 'flex' , gap : '35px' , margin : '40px 0px 40px 15px'}}>
-            <Grid item sm={12} md={6} lg={2}>
-              <CrmMonthlyBudget />
-            </Grid>
-
-            <Grid item sm={12} md={6} lg={2} style={{display :'flex', flexDirection : 'column' , justifyContent : 'space-around', marginLeft : '20px'}}>
-                <div style={{display : 'flex', justifyContent : 'space-around' ,  }}>
-                <span>Total trades</span>
-                <span style={{fontWeight : 700}}>7</span>
-                </div>
-                
-                <div style={{display : 'flex', justifyContent : 'space-around'}}>
-                <span>Winrate</span>
-                <span style={{fontWeight : 700}}>42.8%</span>
-                </div>
-            </Grid>
-
-            <Grid item sm={12} md={6} lg={2} style={{display :'flex', flexDirection : 'column' , justifyContent : 'space-around',}}>
-                <div style={{display : 'flex', justifyContent : 'space-around' }}>
-                <span>Winners</span>
-                <span style={{fontWeight : 700}}>3</span>
-                </div>
-                
-                <div style={{display : 'flex', justifyContent : 'space-around'}}>
-                <span>losers</span>
-                <span style={{fontWeight : 700}}>4</span>
-                </div>
-            </Grid>
-
-            <Grid item sm={12} md={6} lg={2} style={{display :'flex', flexDirection : 'column' , justifyContent : 'space-around',}}>
-                <div style={{display : 'flex', justifyContent : 'space-around'}}>
-                <span>Gross P&L</span>
-                <span style={{fontWeight : 700}}>$62.6</span>
-                </div>
-                
-                <div style={{display : 'flex', justifyContent : 'space-around'}}>
-                <span>Volume</span>
-                <span style={{fontWeight : 700}}>840</span>
-                </div>
-            </Grid>
-            
-            <Grid item sm={12} md={6} lg={2} style={{display :'flex', flexDirection : 'column' , justifyContent : 'space-around'}}>
-                <div style={{display : 'flex', justifyContent : 'space-around' }}>
-                <span>Commissions</span>
-                <span style={{fontWeight : 700}}>$25</span>
-                </div>
-                
-                <div style={{display : 'flex', justifyContent : 'space-around' }}>
-                <span>Profit factor</span>
-                <span style={{fontWeight : 700}}>4.21</span>
-                </div>
-            </Grid>
-        </Grid>
+          <div style={{margin : "40px 0"}}><DailyJournalCard /></div>
         <FroalaEditorComponent 
           tag='textarea'
           onModelChange={() => console.log('f')}
@@ -115,3 +65,4 @@ export default function DailyJournalPopup() {
     </div>
   );
 }
+

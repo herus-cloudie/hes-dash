@@ -94,7 +94,6 @@ const CrmMonthlyBudget = () => {
     <div>
         <ReactApexcharts
           type='area'
-          height={200}
           width={280}
           options={options}
           series={[{ name: 'Traffic Rate', data: [0, 85, 25, 125, 90, 550, 200, 350] }]}
