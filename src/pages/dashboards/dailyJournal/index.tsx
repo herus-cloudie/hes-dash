@@ -30,10 +30,11 @@ import DailyJournalCard from "src/@core/components/dailyJournalCard"
 
 import DailyJournalPopup from 'src/pages/components/popup/dailyJournalPopup'
 import Image from 'next/image'
-import { Data } from "src/constant/data"
+
+// import { Data } from "src/constant/data"//.
 
 const CrmDashboard = () => {
-const {position_table_data} = Data;
+// const {position_table_data} = Data;
 const theme = useTheme();
 
   return (

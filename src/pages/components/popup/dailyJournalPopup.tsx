@@ -12,8 +12,6 @@ import dynamic from 'next/dynamic';
 const FroalaEditorComponent = dynamic(() => import('react-froala-wysiwyg'), { ssr: false });
 
 import { Icon } from '@iconify/react';
-import { Grid } from '@mui/material';
-import CrmMonthlyBudget from 'src/views/dashboards/crm/CrmMonthlyBudget';
 import DailyJournalCard from 'src/@core/components/dailyJournalCard';
 
 const style = {
