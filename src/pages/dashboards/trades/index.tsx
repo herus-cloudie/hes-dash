@@ -92,7 +92,7 @@
 
 // export default EcommerceDashboard
 
-import React from 'react';
+import React, {useEffect, useState } from 'react';
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
@@ -117,21 +117,31 @@ import {chartData} from 'src/constant'
 
 // ** custom hooks Imports
 import useCheckMeta from 'src/hooks/useCheckMeta'
+import TableBasic from 'src/views/table/data-grid/TableBasic';
+
+import Spinner from 'src/@core/components/spinner'
 
 const Trade = () => {  
   const theme = useTheme();
   
   const {status} = useCheckMeta();
 
+  useEffect(() => {
+    setState(status)
+  }, [status])
+
+  const [state, setState] = useState(status);
+
   const { series , options} = chartData(theme)
 
   const average = (+series[0].data[0] / series[1].data[0]).toFixed(2);
 
   return (
-    <> 
-    {
-      status == 'notEntered' ? <MetaForm />
-      : status == 'pending' ?  <Pending />
+    <>
+    {state === 'notEntered' ? (
+      <MetaForm setState={setState}/>
+    ) : state === 'pending' ? <Pending />
+    : state === 'loading' ? <Spinner />
       : <ApexChartWrapper>
         <Grid container spacing={6} className='match-height'>  
           <Grid item xs={12} sm={6} xl={3}>
@@ -159,6 +169,10 @@ const Trade = () => {
           </Grid>
           <Grid item xs={12} sm={6} xl={3}>
               <ApexDonutChart title='Profit Factor' colors={[ '#72E128' ,'#FF4D49']} labels={['win', 'loss']} series={[68 , 32]} avrgNumb='1.6'/> 
+          </Grid>
+          
+          <Grid item xs={12}>
+            <TableBasic />
           </Grid>
         </Grid>
       </ApexChartWrapper>

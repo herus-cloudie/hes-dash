@@ -5,7 +5,6 @@ import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts';
 import ApexDonutChart from 'src/views/charts/apex-charts/ApexDonutChart';
 import ReactApexcharts from 'src/@core/components/react-apexcharts';
 import ApexAreaChart from 'src/views/charts/apex-charts/ApexAreaChart';
-import CardStatisticsVertical from 'src/@core/components/card-statistics/card-stats-vertical';
 import Pending from 'src/@core/components/spinner/pending';
 import MetaForm from 'src/pages/forms/metaForm';
 import AppCalendar from 'src/pages/apps/calendar';
@@ -13,9 +12,9 @@ import TableBasic from 'src/views/table/data-grid/TableBasic';
 import AnalyticsPerformance from 'src/views/dashboards/analytics/AnalyticsPerformance';
 import useCheckMeta from 'src/hooks/useCheckMeta';
 import { chartData } from 'src/constant';
-import Icon from 'src/@core/components/icon';
 import Spinner from 'src/@core/components/spinner'
 import { Data } from 'src/constant/data';
+import MainCharts from 'src/@core/components/analyticsList/main';
 
 const AnalyticsDashboard = () => {
   const { status } = useCheckMeta();
@@ -53,29 +52,11 @@ const AnalyticsDashboard = () => {
               renderInput={(params) => <TextField {...params} label={'حساب متاتریدر'} variant="standard" />}
             />
           <Grid container spacing={6} className='match-height'>
+            <MainCharts>
             <Grid item xs={12} sm={6} xl={2.4}>
-              <ApexDonutChart title='Trade win' colors={['#72E128', '#2c2cff', '#FF4D49']} labels={['win', 'break even', 'loss']} series={[+total_win_count, +break_even, +total_loss_count]} avrgNumb={`${((+total_win_count / +total_trades) * 100).toFixed(1).toString()} %`} />
+             <ApexDonutChart title='Day win' colors={['#72E128',  '#FF4D49']} labels={['win', 'loss']} series={[positiveProfit.length , negativeProfit.length]} avrgNumb={positiveProfit.length.toString()} />
             </Grid>
-            <Grid item xs={12} sm={6} xl={2.4}>
-              <Card dir='ltr'>
-                <div style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column', height: '100%', padding: '1.25rem', justifyItems: 'center' }}>
-                  <div>Average win/loss trade</div>
-                  <div style={{ paddingRight: '10px' }}>
-                    <ReactApexcharts type='bar' height={100} series={series} options={options} />
-                  </div>
-                  <p style={{ fontSize: '1.82rem', textAlign: 'center' }}>{Math.abs(+gross_profit / +gross_loss).toFixed(2)}</p>
-                </div>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={6} xl={2.4}>
-              <ApexDonutChart title='Day win' colors={['#72E128',  '#FF4D49']} labels={['win', 'loss']} series={[positiveProfit.length , negativeProfit.length]} avrgNumb={positiveProfit.length.toString()} />
-            </Grid>
-            <Grid item xs={12} sm={6} xl={2.4}>
-              <CardStatisticsVertical trend={+total_net_profit >= 0 ? 'positive' : 'negative'} stats={total_net_profit} trendNumber={+((+total_net_profit / +balance) * 100).toFixed(1)} title='Net P&L' chipText='یک ماه گذشته' icon={<Icon icon="solar:dollar-bold" />} />
-            </Grid>
-            <Grid item xs={12} sm={6} xl={2.4}>
-              <ApexDonutChart title='Profit Factor' colors={[ '#2c2cff', '#FF4D49','#72E128']} labels={['break even', 'loss','win' ]} series={[+break_even, +total_loss_count , +total_win_count ]} avrgNumb={(+profit_trades_percent / +loss_trades_percent).toFixed(2)} />
-            </Grid>
+            </MainCharts>
             <Grid item xs={12} sm={6} lg={6} xl={4}>
               <ApexAreaChart />
             </Grid>
@@ -106,3 +87,4 @@ const AnalyticsDashboard = () => {
 };
 
 export default AnalyticsDashboard;
+
