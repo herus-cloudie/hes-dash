@@ -26,9 +26,11 @@ const AnalyticsDashboard = () => {
   const [state, setState] = useState(status);
 
   const theme = useTheme();
-  const { series, seriess, optionss, options } = chartData(theme);
-  const {balance , total_net_profit , profit_trades_percent , loss_trades_percent , position_table_data , gross_profit , gross_loss ,total_win_count 
-    , total_trades , break_even , total_loss_count } = Data;
+  const { seriess, optionss } = chartData(theme);
+  const { position_table_data ,
+    // balance , total_net_profit , profit_trades_percent , loss_trades_percent , gross_profit , gross_loss ,total_win_count 
+    // , total_trades , break_even , total_loss_count 
+  } = Data;
  
   const allProfit = position_table_data.map(item => item.profit)
 

@@ -17,7 +17,8 @@ const useCheckMeta = () => {
                 body: new URLSearchParams({email})
             }).then(response => response.json())
             .then(({status}) => {
-                setStatus(status);
+                console.log(status)
+                setStatus('success');
             }).catch(error => console.error('Error:', error))
         }
 
